@@ -1,12 +1,15 @@
 import React from 'react';
-import Constants from 'expo-constants';
+// import Constants from 'expo-constants';
 import { StyleSheet, View } from 'react-native';
-import Text from './Text';
 import RepositoryList from './RepositoryList';
+import AppBar from './AppBar';
+import { Route, Switch, Redirect } from 'react-router-native';
+import SignIn from './SignIn';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Constants.statusBarHeight,
+    backgroundColor:'#e1e4e8',
+    display:'flex',
     flexGrow: 1,
     flexShrink: 1,
   },
@@ -15,8 +18,16 @@ const styles = StyleSheet.create({
 const Main = () => {
   return (
     <View style={styles.container}>
-      <Text>Rate Repository Application</Text>
-      <RepositoryList></RepositoryList>
+      <AppBar></AppBar>
+      <Switch>
+      <Route path="/SignIn" exact>
+         <SignIn></SignIn>
+        </Route>
+        <Route path="/" exact>
+          <RepositoryList />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
     </View>
   );
 };
