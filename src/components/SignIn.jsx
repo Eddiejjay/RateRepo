@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import Text from './Text';
 import useSignIn from '../hooks/useSignIn';
+import { useHistory } from 'react-router-native';
 
 
 
@@ -38,6 +39,7 @@ export const SignInForm = ({ onSubmit }) => {
   };
 
   const SignIn = () => {
+      const history = useHistory();
       const [signIn] = useSignIn();
     
       const onSubmit = async (values) => {
@@ -48,6 +50,7 @@ export const SignInForm = ({ onSubmit }) => {
           const { data }  = await signIn({ username, password });
           console.log('pass', username,password);
           console.log("data",data);
+          history.push('/');
         } catch (e) {
           console.log(e);
         }
