@@ -4,6 +4,24 @@ import RepositoryItem from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
 // ...
 
+
+export const RepositoryListContainer = ({ repositories }) => {
+  const repositoryNodes = repositories
+    ? repositories.edges.map((edge) => edge.node)
+    : [];
+
+  return (
+    <FlatList
+    keyExtractor={(item) => item.id}
+    data={repositoryNodes}
+    renderItem={({ item }) => ( 
+      <RepositoryItem item = {item}/>
+    )}
+    // Other props
+  />
+  );
+};
+
 const RepositoryList = () => {
   const { repositories } = useRepositories();
 
