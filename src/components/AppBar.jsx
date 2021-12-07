@@ -43,7 +43,8 @@ const AppBar = () => {
      <ScrollView horizontal>
     <Tab text = 'Repositories' link ='/'></Tab>
     {!authorizedUser && <Tab text = 'Sign in' link ='/SignIn'></Tab>}
-    {authorizedUser&&  <Pressable onPress={signOut}><Text style={styles.text}>Sign out</Text></Pressable>}
+    {authorizedUser&&  <Pressable onPress={signOut}><Text>sign out</Text></Pressable>}
+    {authorizedUser&& <Tab text = 'Create a review ' link ='/createReview'></Tab> }
     </ScrollView>
     </View>
   

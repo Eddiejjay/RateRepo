@@ -49,15 +49,11 @@ export const SignInForm = ({ onSubmit }) => {
         console.log('username, password', username,password);
         try {
           const { data }  = await signIn({ username, password });
-          console.log('pass', username,password);
-          console.log("data",data);
           history.push('/');
         } catch (e) {
           console.log(e);
         }
       };
-  
-
   
   return (
 
@@ -80,6 +76,8 @@ export const SignInContainer = ({ onSubmit }) => {
     </Formik>
   );
 };
+
+
 
 
 export default SignIn;
