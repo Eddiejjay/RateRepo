@@ -38,9 +38,7 @@ export const ReviewForm = ({ onSubmit }) => {
       </Pressable>
     </View>
     );
-  
   };
-
   const initialValues = {
     ownerName: '',
     repositoryName: '',
@@ -49,36 +47,22 @@ export const ReviewForm = ({ onSubmit }) => {
 
   };
 
-
   const CreateReview = () => {
-    // const history = useHistory();
-    // const [signIn] = useSignIn();
-    
-  
     const [newReview] = useNewReview();
 
-
-
-    
-      const onSubmit = async (values) => {
-        const {repositoryName, ownerName, rating, text} = values;
-    
-        console.log('values', repositoryName, ownerName, rating, text);
+    const onSubmit = async (values) => {
+      const {repositoryName, ownerName, rating, text} = values;
         try {
-          const { result }  = await newReview({ repositoryName, ownerName, rating, text });
-          console.log('data', result);
+          const { result }  = await newReview({ ownerName, repositoryName, rating, text });
         } catch (e) {
           console.log(e);
         }
       };
 
 return (
-
     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
       {({ handleSubmit }) => <ReviewForm onSubmit={handleSubmit} />}
     </Formik>
-
-
 );
 };
 

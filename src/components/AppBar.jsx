@@ -5,8 +5,7 @@ import Tab from './Tab';
 import useAuthorizedUser from '../hooks/useAuthorizedUser';
 import useAuthStorage from '../hooks/useAuthStorage';
 import { useApolloClient } from '@apollo/client';
-// import Text from './Text';
-// import { Link } from 'react-router-native';
+
 const styles = StyleSheet.create({
   container: {
     flexDirection:'row',
@@ -16,9 +15,8 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     opacity:0.6,
     height: 90
-    // ...
   },
-  // ...
+
 });
 
 
@@ -27,27 +25,23 @@ const AppBar = () => {
   const { authorizedUser } = useAuthorizedUser();
   const apolloClient = useApolloClient();
 
-
   const signOut = async  () => {
     await authStorage.removeAccessToken();
     apolloClient.resetStore();
-  
-
 
 };
 
-
   return (
-  
+
   <View style={styles.container}>
      <ScrollView horizontal>
     <Tab text = 'Repositories' link ='/'></Tab>
     {!authorizedUser && <Tab text = 'Sign in' link ='/SignIn'></Tab>}
+    {!authorizedUser && <Tab text = 'Sign up' link ='/SignUp'></Tab>}
     {authorizedUser&&  <Pressable onPress={signOut}><Text>sign out</Text></Pressable>}
     {authorizedUser&& <Tab text = 'Create a review ' link ='/createReview'></Tab> }
     </ScrollView>
     </View>
-  
 
   );
 };

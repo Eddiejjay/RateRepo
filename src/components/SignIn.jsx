@@ -8,7 +8,6 @@ import useSignIn from '../hooks/useSignIn';
 import { useHistory } from 'react-router-native';
 
 
-
 const validationSchema = yup.object().shape({
   username: yup
     .string()
@@ -76,8 +75,6 @@ export const SignInContainer = ({ onSubmit }) => {
     </Formik>
   );
 };
-
-
 
 
 export default SignIn;

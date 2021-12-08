@@ -27,12 +27,8 @@ const styles = StyleSheet.create({
     container: {
         flexDirection:'column',
         justifyContent: 'space-between'
-
-
     },
   });
-
-
 
 const RepositoryItem = ({ item }) => {
     const params = useParams();
@@ -41,16 +37,13 @@ const RepositoryItem = ({ item }) => {
     const onPress = () => {
         console.log('jeee');
         history.push(`/${item.id}`);
-        
           };
 
     const onLinkPress = () => {
-
             Linking.openURL(item.url);
         };
 
     return (
-      
         <View style = {styles.container}> 
           <Pressable onPress={onPress}>
             <View style = {imageAndInfoContainer.container}>     
